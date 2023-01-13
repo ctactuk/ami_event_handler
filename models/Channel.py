@@ -1,6 +1,5 @@
 from enum import Enum
-import Event
-
+from Event import Event
 
 class ChannelStateDesc(Enum):
     Down = "Down"

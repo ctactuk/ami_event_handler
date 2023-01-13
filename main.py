@@ -11,6 +11,7 @@ from handlers.susbcribers.bridge_leave import BridgeLeave
 from handlers.susbcribers.dial_begin import DialBegin
 from handlers.susbcribers.dial_end import DialEnd
 from clients.ami import Ami
+from config.ami import config as ami_config
 import time
 
 from core.container import Container
@@ -34,18 +35,19 @@ publisher.register("DialBegin", DialBegin())
 publisher.register("DialEnd", DialEnd())
 
 
-ami_client = Ami(publisher, events, [])
+ami_client = Ami(publisher, events, ami_config)
+
 
 def main():
     try:
-        print("starting")
         ami_client.start()
         while True:
             time.sleep(10)
     except (KeyboardInterrupt, SystemExit, Exception):
         ami_client.stop()
 
-if __name__=="__main__":
+
+if __name__ == "__main__":
     container = Container()
     container.wire(modules=[__name__])
     main()
