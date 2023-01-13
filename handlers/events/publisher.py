@@ -4,7 +4,7 @@ from interfaces.subject import Subject
 from typing import List
 
 class Plublisher(Subject):
-    def __init__(self, events: List[str] = []):
+    def __init__(self, events: List[str]):
         self.subscribers = {event: {}
                             for event in events}
 

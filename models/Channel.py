@@ -1,7 +1,8 @@
 from enum import Enum
 import Event
 
-
+class Event:
+    uniqueid: str
 class ChannelStateDesc(Enum):
     Down = "Down"
     Rsrvd = "Rsrvd"
