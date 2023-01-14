@@ -14,7 +14,7 @@ class Subject(ABC):
     @abstractmethod
     def dispatch(self, event, message):
         pass
-    
+
     @abstractmethod
     def get_subscribers(self, event: str):
         pass
