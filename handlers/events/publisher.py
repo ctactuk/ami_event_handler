@@ -2,6 +2,9 @@ import json
 from interfaces.observer import Observer
 from interfaces.subject import Subject
 from typing import List
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 class Plublisher(Subject):
@@ -16,6 +19,7 @@ class Plublisher(Subject):
 
     def dispatch(self, event: str, message: str):
         for subscriber, callback in self.get_subscribers(event).items():
+            logging.info(f"Processing{subscriber}")
             json_message = json.loads(message.replace("'", "\""))
             callback(json_message)
 
